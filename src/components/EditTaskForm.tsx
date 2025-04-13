@@ -1,44 +1,69 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
-interface EditTaskFormProps {
-  taskId: number;
-  currentTitle: string;
-  saveEdit: (id: number, newTitle: string) => void;
-  cancelEdit: () => void;
-}
+const EditTaskForm = (props) => {
+  const [newTitle, setNewTitle] = useState(props.currentTitle);
 
-const EditTaskForm: React.FC<EditTaskFormProps> = ({
-  taskId,
-  currentTitle,
-  saveEdit,
-  cancelEdit,
-}) => {
-  const [newTitle, setNewTitle] = useState<string>(currentTitle);
-
-  const handleSave = () => {
-    if (newTitle.trim()) {
-      saveEdit(taskId, newTitle);
+  const saveEditedTask = () => {
+    if (newTitle !== "") {
+      props.saveEdit(props.taskId, newTitle);
+    } else {
+      console.log("Title is empty");
     }
   };
 
   return (
-    <div className="mb-4 bg-white p-4 rounded-lg shadow">
+    <div
+      style={{
+        marginBottom: "20px",
+        backgroundColor: "white",
+        padding: "10px",
+        borderRadius: "5px",
+        boxShadow: "0 0 5px gray",
+      }}
+    >
       <input
         type="text"
         value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
-        className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+        onChange={(event) => {
+          setNewTitle(event.target.value);
+        }}
+        style={{
+          padding: "10px",
+          width: "100%",
+          border: "1px solid gray",
+          borderRadius: "5px",
+          marginBottom: "10px",
+        }}
       />
-      <div className="flex gap-2 mt-3">
+      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
         <button
-          onClick={handleSave}
-          className="w-full p-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
+          onClick={() => {
+            saveEditedTask();
+          }}
+          style={{
+            flex: 1,
+            padding: "10px",
+            backgroundColor: "green",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+          }}
         >
           Save
         </button>
         <button
-          onClick={cancelEdit}
-          className="w-full p-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition"
+          onClick={() => {
+            props.cancelEdit();
+          }}
+          style={{
+            flex: 1,
+            padding: "10px",
+            backgroundColor: "red",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+          }}
         >
           Cancel
         </button>

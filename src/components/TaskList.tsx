@@ -1,54 +1,57 @@
-import { Task } from "../types/Task";
+import React from "react";
 
-interface TaskListProps {
-  tasks: Task[];
-  deleteTask: (id: number) => void;
-  toggleComplete: (id: number) => void;
-  startEditing: (id: number) => void; // اضافه شده
-}
-
-const TaskList: React.FC<TaskListProps> = ({
-  tasks,
-  deleteTask,
-  toggleComplete,
-  startEditing,
-}) => {
+const TaskList = (props) => {
   return (
     <ul>
-      {tasks.map((task) => (
+      {props.tasks.map((task) => (
         <li
           key={task.id}
-          className={`flex items-center justify-between p-4 mb-3 rounded-lg shadow transition ${
-            task.completed ? "bg-green-100" : "bg-white border border-gray-200"
-          }`}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "10px",
+            marginBottom: "10px",
+            borderRadius: "5px",
+            boxShadow: "0 0 5px gray",
+            backgroundColor: task.completed ? "#d4edda" : "white",
+            border: task.completed ? "none" : "1px solid gray",
+          }}
         >
-          <div className="flex items-center gap-3">
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <button
-              onClick={() => toggleComplete(task.id)}
-              className={`w-6 h-6 rounded-full border ${
-                task.completed
-                  ? "bg-green-500 border-green-500"
-                  : "border-gray-300"
-              }`}
+              onClick={() => props.toggleComplete(task.id)}
+              style={{
+                width: "20px",
+                height: "20px",
+                borderRadius: "50%",
+                border: "1px solid",
+                backgroundColor: task.completed ? "green" : "transparent",
+              }}
             />
             <span
-              className={`${
-                task.completed ? "line-through text-gray-500" : "text-gray-900"
-              }`}
+              style={{
+                textDecoration: task.completed ? "line-through" : "none",
+                color: task.completed ? "gray" : "black",
+              }}
             >
               {task.title}
             </span>
           </div>
-          <div className="flex items-center gap-2">
+          <div style={{ display: "flex", gap: "10px" }}>
             <button
-              onClick={() => startEditing(task.id)}
-              className="text-yellow-500 hover:text-yellow-700 transition"
+              onClick={() => props.startEditing(task.id)}
+              style={{
+                color: "orange",
+              }}
             >
               Edit
             </button>
             <button
-              onClick={() => deleteTask(task.id)}
-              className="text-red-500 hover:text-red-700 transition"
+              onClick={() => props.deleteTask(task.id)}
+              style={{
+                color: "red",
+              }}
             >
               Delete
             </button>

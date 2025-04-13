@@ -1,31 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
-interface AddTaskFormProps {
-  addTask: (title: string) => void;
-}
+const AddTaskForm = (props) => {
+  const [newTask, setNewTask] = useState("");
 
-const AddTaskForm: React.FC<AddTaskFormProps> = ({ addTask }) => {
-  const [newTask, setNewTask] = useState<string>("");
-
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      addTask(newTask);
+  const addNewTask = () => {
+    if (newTask != "") {
+      props.addTask(newTask);
       setNewTask("");
+    } else {
+      console.log("Task is empty");
     }
   };
 
   return (
-    <div className="mb-6 bg-white p-4 rounded-lg shadow">
+    <div
+      style={{
+        marginBottom: "20px",
+        backgroundColor: "white",
+        padding: "10px",
+        borderRadius: "5px",
+        boxShadow: "0 0 5px gray",
+      }}
+    >
       <input
         type="text"
         value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
+        onChange={(event) => {
+          setNewTask(event.target.value);
+        }}
         placeholder="Enter new task..."
-        className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+        style={{
+          padding: "10px",
+          width: "100%",
+          border: "1px solid gray",
+          borderRadius: "5px",
+          marginBottom: "10px",
+        }}
       />
       <button
-        onClick={handleAddTask}
-        className="mt-3 w-full p-3 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition"
+        onClick={() => {
+          addNewTask();
+        }}
+        style={{
+          padding: "10px",
+          width: "100%",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+        }}
       >
         Add Task
       </button>
