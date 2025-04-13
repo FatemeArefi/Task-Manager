@@ -69,7 +69,9 @@ const TaskManager = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="p-6 max-w-md bg-white rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold text-center mb-6">Task Manager</h1>
+        <h1 className=" font-pacifico text-3xl font-bold text-center mb-6">
+          Task Manager
+        </h1>
         {editingTaskId && taskToEdit ? (
           <EditTaskForm
             taskId={taskToEdit.id}
