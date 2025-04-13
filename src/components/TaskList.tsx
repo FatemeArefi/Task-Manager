@@ -1,21 +1,17 @@
-import React from "react";
-
-interface Task {
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { Task } from "../types/Task";
 
 interface TaskListProps {
   tasks: Task[];
   deleteTask: (id: number) => void;
   toggleComplete: (id: number) => void;
+  startEditing: (id: number) => void; // اضافه شده
 }
 
 const TaskList: React.FC<TaskListProps> = ({
   tasks,
   deleteTask,
   toggleComplete,
+  startEditing,
 }) => {
   return (
     <ul>
@@ -44,6 +40,12 @@ const TaskList: React.FC<TaskListProps> = ({
             </span>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => startEditing(task.id)}
+              className="text-yellow-500 hover:text-yellow-700 transition"
+            >
+              Edit
+            </button>
             <button
               onClick={() => deleteTask(task.id)}
               className="text-red-500 hover:text-red-700 transition"
