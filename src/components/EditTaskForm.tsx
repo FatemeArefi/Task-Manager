@@ -13,42 +13,21 @@ const EditTaskForm = (props) => {
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "20px",
-        backgroundColor: "white",
-        padding: "10px",
-        borderRadius: "5px",
-        boxShadow: "0 0 5px gray",
-      }}
-    >
+    <div className="mb-4 bg-white p-4 rounded-lg shadow">
       <input
         type="text"
         value={newTitle}
         onChange={(event) => {
           setNewTitle(event.target.value);
         }}
-        style={{
-          padding: "10px",
-          width: "100%",
-          border: "1px solid gray",
-          borderRadius: "5px",
-          marginBottom: "10px",
-        }}
+        className="p-3 w-full border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring focus:ring-green-300"
       />
-      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+      <div className="flex gap-3 mt-3">
         <button
           onClick={() => {
             saveEditedTask();
           }}
-          style={{
-            flex: 1,
-            padding: "10px",
-            backgroundColor: "green",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-          }}
+          className="flex-1 p-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
         >
           Save
         </button>
@@ -56,14 +35,7 @@ const EditTaskForm = (props) => {
           onClick={() => {
             props.cancelEdit();
           }}
-          style={{
-            flex: 1,
-            padding: "10px",
-            backgroundColor: "red",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-          }}
+          className="flex-1 p-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition"
         >
           Cancel
         </button>
