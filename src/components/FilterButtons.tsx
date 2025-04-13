@@ -2,20 +2,16 @@ import React from "react";
 
 const FilterButtons = (props) => {
   return (
-    <div style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
+    <div className="flex gap-3 mb-4">
       <button
         onClick={() => {
           props.setFilter("all");
         }}
-        style={{
-          padding: "10px",
-          borderRadius: "10px",
-          fontWeight: "500",
-          backgroundColor: props.filter === "all" ? "blue" : "lightgray",
-          color: props.filter === "all" ? "white" : "black",
-          boxShadow:
-            props.filter === "all" ? "0 2px 5px rgba(0, 0, 0, 0.3)" : "none",
-        }}
+        className={`py-2 px-4 rounded-lg font-medium ${
+          props.filter === "all"
+            ? "bg-blue-500 text-white shadow-md"
+            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+        }`}
       >
         All
       </button>
@@ -23,15 +19,11 @@ const FilterButtons = (props) => {
         onClick={() => {
           props.setFilter("active");
         }}
-        style={{
-          padding: "10px",
-          borderRadius: "10px",
-          fontWeight: "500",
-          backgroundColor: props.filter === "active" ? "blue" : "lightgray",
-          color: props.filter === "active" ? "white" : "black",
-          boxShadow:
-            props.filter === "active" ? "0 2px 5px rgba(0, 0, 0, 0.3)" : "none",
-        }}
+        className={`py-2 px-4 rounded-lg font-medium ${
+          props.filter === "active"
+            ? "bg-blue-500 text-white shadow-md"
+            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+        }`}
       >
         Active
       </button>
@@ -39,17 +31,11 @@ const FilterButtons = (props) => {
         onClick={() => {
           props.setFilter("completed");
         }}
-        style={{
-          padding: "10px",
-          borderRadius: "10px",
-          fontWeight: "500",
-          backgroundColor: props.filter === "completed" ? "blue" : "lightgray",
-          color: props.filter === "completed" ? "white" : "black",
-          boxShadow:
-            props.filter === "completed"
-              ? "0 2px 5px rgba(0, 0, 0, 0.3)"
-              : "none",
-        }}
+        className={`py-2 px-4 rounded-lg font-medium ${
+          props.filter === "completed"
+            ? "bg-blue-500 text-white shadow-md"
+            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+        }`}
       >
         Completed
       </button>

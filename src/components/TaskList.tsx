@@ -6,52 +6,37 @@ const TaskList = (props) => {
       {props.tasks.map((task) => (
         <li
           key={task.id}
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "10px",
-            marginBottom: "10px",
-            borderRadius: "5px",
-            boxShadow: "0 0 5px gray",
-            backgroundColor: task.completed ? "#d4edda" : "white",
-            border: task.completed ? "none" : "1px solid gray",
-          }}
+          className={`flex justify-between items-center p-4 mb-3 rounded-lg shadow ${
+            task.completed ? "bg-green-100" : "bg-white border border-gray-300"
+          }`}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="flex items-center gap-3">
             <button
               onClick={() => props.toggleComplete(task.id)}
-              style={{
-                width: "20px",
-                height: "20px",
-                borderRadius: "50%",
-                border: "1px solid",
-                backgroundColor: task.completed ? "green" : "transparent",
-              }}
+              className={`w-6 h-6 rounded-full border ${
+                task.completed
+                  ? "bg-green-500 border-green-500"
+                  : "border-gray-300"
+              }`}
             />
             <span
-              style={{
-                textDecoration: task.completed ? "line-through" : "none",
-                color: task.completed ? "gray" : "black",
-              }}
+              className={`${
+                task.completed ? "line-through text-gray-500" : "text-gray-800"
+              }`}
             >
               {task.title}
             </span>
           </div>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className="flex gap-2">
             <button
               onClick={() => props.startEditing(task.id)}
-              style={{
-                color: "orange",
-              }}
+              className="text-yellow-500 hover:text-yellow-600 transition"
             >
               Edit
             </button>
             <button
               onClick={() => props.deleteTask(task.id)}
-              style={{
-                color: "red",
-              }}
+              className="text-red-500 hover:text-red-600 transition"
             >
               Delete
             </button>
