@@ -5,7 +5,7 @@ const AddTaskForm = (props) => {
   const [newTask, setNewTask] = useState("");
 
   const addNewTask = () => {
-    if (newTask != "") {
+    if (newTask !== "") {
       props.addTask(newTask);
       setNewTask("");
     } else {
@@ -14,15 +14,7 @@ const AddTaskForm = (props) => {
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "20px",
-        backgroundColor: "white",
-        padding: "10px",
-        borderRadius: "5px",
-        boxShadow: "0 0 5px gray",
-      }}
-    >
+    <div className="mb-6 bg-white p-4 rounded-lg shadow">
       <input
         type="text"
         value={newTask}
@@ -30,26 +22,13 @@ const AddTaskForm = (props) => {
           setNewTask(event.target.value);
         }}
         placeholder="Enter new task..."
-        style={{
-          padding: "10px",
-          width: "100%",
-          border: "1px solid gray",
-          borderRadius: "5px",
-          marginBottom: "10px",
-        }}
+        className="p-3 w-full border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring focus:ring-blue-300"
       />
       <button
         onClick={() => {
           addNewTask();
         }}
-        style={{
-          padding: "10px",
-          width: "100%",
-          backgroundColor: "blue",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-        }}
+        className="p-3 w-full bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition"
       >
         Add Task
       </button>
