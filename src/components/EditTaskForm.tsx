@@ -27,7 +27,7 @@ const EditTaskForm = (props) => {
           onClick={() => {
             saveEditedTask();
           }}
-          className="flex-1 p-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
+          className="flex-1 p-3 bg-green-700 text-white font-medium rounded-lg hover:bg-green-600 transition"
         >
           Save
         </button>
@@ -35,7 +35,7 @@ const EditTaskForm = (props) => {
           onClick={() => {
             props.cancelEdit();
           }}
-          className="flex-1 p-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition"
+          className="flex-1 p-3 bg-red-700 text-white font-medium rounded-lg hover:bg-red-600 transition"
         >
           Cancel
         </button>

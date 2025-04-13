@@ -28,7 +28,7 @@ const AddTaskForm = (props) => {
         onClick={() => {
           addNewTask();
         }}
-        className="p-3 w-full bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition"
+        className="p-3 w-full bg-blue-400 text-white font-medium rounded-lg hover:bg-blue-600 transition"
       >
         Add Task
       </button>

@@ -15,7 +15,7 @@ const TaskList = (props) => {
               onClick={() => props.toggleComplete(task.id)}
               className={`w-6 h-6 rounded-full border ${
                 task.completed
-                  ? "bg-green-500 border-green-500"
+                  ? "bg-green-600 border-green-600"
                   : "border-gray-300"
               }`}
             />
@@ -30,13 +30,13 @@ const TaskList = (props) => {
           <div className="flex gap-2">
             <button
               onClick={() => props.startEditing(task.id)}
-              className="text-yellow-500 hover:text-yellow-600 transition"
+              className="text-yellow-700 hover:text-yellow-700 transition"
             >
               Edit
             </button>
             <button
               onClick={() => props.deleteTask(task.id)}
-              className="text-red-500 hover:text-red-600 transition"
+              className="text-red-700 hover:text-red-700 transition"
             >
               Delete
             </button>
